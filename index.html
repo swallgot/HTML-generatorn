@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML-generatorn</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7af145d334.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="removeAlert">
+        <h1>Vill du ta bort elementet?</h1>
+        <button id="removeNo">Nej</button>
+        <button id="removeYes">Ja</button>
+    </div>
+    <img src="images/logo.png" alt="logga" class="titel">
+    <div class="editPopup">
+        <div class="cross"><i class="fa-solid fa-x"></i></div>
+        <h1>Redigera element</h1>
+
+        <div class="edit">
+            <div class="flex-align-vertical fontStyle">
+                <input type="radio" name="editTextStyle" id="editItalic">
+                <label for="editItalic"><i>Kursiv</i></label>
+    
+                <input type="radio" name="editTextStyle" id="editNormal">
+                <label for="editNormal">Normal</label> 
+    
+                <input type="radio" name="editTextStyle" id="editBold">
+                <label for="editBold"><b>Fetstil</b></label> 
+            </div>
+            <div class="flex-align-vertical text-align" style="margin-top: 20px;">
+                <input type="radio" name="editTextAlign" id="editAlignLeft">
+                <label for="editAlignLeft"><i class="fa-solid fa-align-left"></i></label>
+    
+                <input type="radio" name="editTextAlign" id="editAlignCenter">
+                <label for="editAlignCenter"><i class="fa-solid fa-align-center"></i></label> 
+    
+                <input type="radio" name="editTextAlign" id="editAlignRight">
+                <label for="editAlignRight"><i class="fa-solid fa-align-right"></i></label> 
+            </div>
+            <div class="flex-align-vertical">
+                <p><b>Textstorlek:</b></p>
+                <div class="flex-align-vertical">
+                    <input type="number" id="editFontSize"><p>(px)</p>
+                </div>
+            </div>
+            <div class="flex-align-vertical">
+                <p><b>Padding:</b></p>
+                <div class="flex-align-vertical">
+                    <input type="number" id="editPadding"><p>(px)</p>
+                </div>
+            </div>
+            <div class="flex-align-vertical">
+                <p><b>Hörnradie:</b></p>
+                <div class="flex-align-vertical">
+                    <input type="number" id="editBorderradius"><p>(px)</p>
+                </div>
+            </div>
+            <div class="flex-align-vertical">
+                <p><b>Bakgrundsfärg:</b></p>
+                <div class="flex-align-vertical">
+                    <input type="color" id="editBackgroundColor">
+                </div>
+            </div>
+            <div class="flex-align-vertical">
+                <p><b>Textfärg:</b></p>
+                <div class="flex-align-vertical">
+                    <input type="color" id="editColor">
+                </div>
+            </div>
+            <button id="remove">Ta bort element</button>
+            <button id="apply">Tillämpa</button>
+        </div>
+
+    </div>
+    <main>
+        <div class="side-menu">
+            <div class="text">
+                <h3>Text till element</h3>
+                <textarea id="ownText" placeholder="Din text här"></textarea>
+            </div>
+                    
+            <div class="element">
+                <div class="hover">
+                    <h3 id="textOutput">Välj element</h3>
+                    <p>↓</p>
+                </div>
+                <div class="dropDown elementDropDown">
+                    <input type="radio" name="whichElement" value="Rubrik" id="headline" onclick="changeText()" checked>
+                    <label for="headline">Rubrik</label> 
+
+                    <input type="radio" name="whichElement" value="Text" id="paragraph" onclick="changeText()">
+                    <label for="paragraph">Text</label>
+                            
+                    <input type="radio" name="whichElement" value="Knapp" id="button" onclick="changeText()">
+                    <label for="button">Knapp</label>
+
+                    <input type="radio" name="whichElement" value="Textfält" id="textbox" onclick="changeText()">
+                    <label for="textbox">Textfält</label>
+                </div>
+            </div>
+
+            <div class="style">
+                <div class="hover">
+                    <h3>Anpassa element</h3>
+                    <p>↓</p>
+                </div>
+                <div class="styleDropDown">
+                    <div class="colors">
+                        <label for="colorPicker"><b>Färg på text:</b></label>
+                        <input type="color" id="colorPicker">
+                    </div>
+    
+                    <p><b>Textstil:</b></p>
+                    <div class="fontStyle">
+                        <input type="radio" name="textStyle" id="italic">
+                        <label for="italic"><i>Kursiv</i></label>
+    
+                        <input type="radio" name="textStyle" id="normalStyle" checked>
+                        <label for="normalStyle">Normal</label> 
+    
+                        <input type="radio" name="textStyle" id="bold">
+                        <label for="bold"><b>Fetstil</b></label> 
+                    </div>
+
+                    <p><b>Textposition: </b></p>
+                    <div class="text-align">
+                        <input type="radio" name="text-align" id="left" checked>
+                        <label for="left">Vänster</label>
+    
+                        <input type="radio" name="text-align" id="center" >
+                        <label for="center">Center</label> 
+    
+                        <input type="radio" name="text-align" id="right">
+                        <label for="right">Höger</label> 
+                    </div>
+
+                    <p><b>Bakgrundsfärg för element:</b></p>
+    
+                    <div class="elementBackground">
+                        <div class="withBorder">
+                            <input type="radio" name="elementColor" id="yes">
+                            <label for="yes">Ja</label>
+        
+                            <input type="radio" name="elementColor" id="no" checked>
+                            <label for="no">Nej</label>
+                        </div>
+                        <div class="noBorder">
+                            <label for="elementBackgroundPicker">Färg: </label>
+                            <input type="color" id="elementBackgroundPicker">
+                        </div>
+                    </div>
+                    <div class="inputs">
+                        <div class="fontSize">
+                            <p><b>Textstorlek:</b></p>
+                            <div class="flex-align-vertical">
+                                <input type="number" id="fontSizeInput">
+                                <p>(px)</p>
+                            </div>
+                        </div>
+    
+                        <div class="borderRadius">
+                            <p><b>Hörnradie:</b></p>
+                            <div class="flex-align-vertical">
+                                <input type="number" id="borderRadius" value="0">
+                                <p>(px)</p>
+                            </div>
+                        </div> 
+        
+                        <div class="paddingValue">
+                            <p><b>Padding:</b></p>
+                            <div class="flex-align-vertical">
+                                <input type="number" id="paddingValue" value="0">
+                                <p>(px)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="background">
+                <div class="hover">
+                    <h3>Bakgrund</h3>
+                    <p>↓</p>
+                </div>
+                <div class="backgroundDropDown">
+                    <div class="align-vertical">
+                        <label for="backgroundPicker"><b>Bakgrundsfärg:</b></label>
+                        <input type="color" id="backgroundPicker" value="#FFFFFF" onchange="ChangeBackground()">
+                    </div>
+                    <div class="align-vertical">
+                        <label for="file"><b>Bakgrundsbild:</b></label>
+                        <input type="file" id="file" accept="images/*" style="display:none;">
+                        <label for="file" class="addFile">Välj fil</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button onclick="Add()" id="add" class="add">Lägg till</button>
+                <button onclick="Clear()" class="reset">Nollställ</button>
+            </div>
+        </div>  
+
+        <p id="alert">Vänligen skriv något i textfältet!</p>
+        
+        <div class="result" id="result">
+            <div class="resultTextResultat">
+                <h2><b>Resultat:</b></h2>
+                <h3><i>Klicka på elementet för att redigera det</i></h3>
+                <div id="backgroundStyle">
+                    <div id="product" class="productStyle"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="resultText">
+        <h2><b>Din HTML kod att klistra in:</b></h2>
+        <div id="productHTML">
+            <p>&lt;html&gt;</p>
+            <p>&lt;head&gt;</p>
+            <p>&nbsp;&nbsp;&lt;style&gt;</p>
+            <p>
+                &nbsp;&nbsp;&nbsp;
+                body {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                font-family: sans-serif;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                background-color: <span id="backgroundColorText">white</span>;<br>
+                <span id="backgroundImage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                background: url(<span style="font-style: italic;">Byt ut denna text mot URL</span>) no-repeat;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                background-size: cover;</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;}
+            </p>
+
+            <p>&nbsp;&nbsp;&lt;/style&gt;</p>
+            <p>&lt;/head&gt;</p>
+            <p>&lt;body&gt;</p>
+
+            <div class="divText" id="divText"></div>
+
+            <p>&lt;/body&gt;</p>
+            <p>&lt;/html&gt;</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/background-handler.js"></script>
+    <script src="js/clear.js"></script>
+    <script src="js/misc.js"></script>
+</body>
+
+</html>
+
